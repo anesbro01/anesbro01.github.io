@@ -1,2 +1,11 @@
-<audio #ref src="assets/test.wav"></audio>
-<a (click)="ref.play()" class="button" href="#">Press me!</a>
+<audio #ref 
+  src="assets/test.wav" 
+  (play)="isPlaying = true;" 
+  (ended)="isPlaying = false;"
+  (pause)="isPlaying = false;"></audio>
+<a 
+  class="button" 
+  [class.pressed]="isPlaying" 
+  (click)="isPlaying ? [ref.pause(), ref.currentTime = 0] : ref.play()" 
+  href="#">
+  Press me!</a>

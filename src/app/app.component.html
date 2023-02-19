@@ -1,11 +1,19 @@
+<img class="photo" src="assets/ciro.png"/>
+
+<div class="container">
+<div class="item" *ngFor="let item of items">
 <audio #ref 
-  src="assets/test.wav" 
-  (play)="isPlaying = true;" 
-  (ended)="isPlaying = false;"
-  (pause)="isPlaying = false;"></audio>
+  [src]="item.src" 
+  (play)="item.isPlaying = true;" 
+  (ended)="item.isPlaying = false;"
+  (pause)="item.isPlaying = false;"></audio>
 <a 
   class="button" 
-  [class.pressed]="isPlaying" 
-  (click)="isPlaying ? [ref.pause(), ref.currentTime = 0] : ref.play()" 
+  [class.pressed]="item.isPlaying" 
+  (click)="item.isPlaying ? [ref.pause(), ref.currentTime = 0] : ref.play()" 
   href="#">
-  Press me!</a>
+  {{ item.label }}
+</a>
+</div>
+</div>
+
